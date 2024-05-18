@@ -1,6 +1,10 @@
+html {
+  font-size: 12px;
+}
+
 body {
   display: block;
-  margin: 8px;
+  margin: 1rem;
 }
 
 .search-container {
@@ -59,40 +63,41 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  padding: 20px;
+  padding: 1rem;
 }
 
 .card {
   background-color: white;
-  width: 300px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+  width: 30rem;
+  padding: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  margin: 1rem;
   box-sizing: border-box;
   border: 2px solid #d00000;
-  border-radius: 10px;
+  border-radius: 1rem;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   /*transition: transform 0.2s, opacity 0.2s;*/
   transition: opacity 0.3s ease;
+  break-inside: avoid;
 }
 
 .card h1 {
   background-color: white;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  font-size: 24px;
+  font-size: 2rem;
   margin: 0;
-  margin-left: 5px;
+  margin-left: 0.5rem;
   text-align: center;
 }
 
 .card h2 {
-  font-size: 14px;
+  font-size: 1.2rem;
   color: rgb(168, 165, 165);
-  margin: 5px 0;
-  margin-left: 5px;
+  margin: 0.2rem 0;
+  margin-left: 1rem;
   text-align: left;
 }
 
@@ -100,8 +105,8 @@ body {
   display: grid;
   background-color: white;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 10px 0;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .card .detail {
@@ -110,24 +115,25 @@ body {
 
 .card .detail strong {
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   color: #d00000;
 }
 
 .card .detail span {
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   color: black;
 }
 
 .card .description {
-  font-size: 12px;
+  /* font-size: 12px; */
   background-color: white;
   color: black;
   margin: 10px 0;
 }
 
 .card .description p {
+  font-size: 1rem;
   margin: 10px 0;
   text-align: justify;
 }
@@ -164,8 +170,9 @@ body {
 
 .card-c {
   font-family: "Roboto", sans-serif;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
   margin: 5px;
   display: flex;
   justify-content: center;
@@ -173,7 +180,26 @@ body {
   background-color: black;
   color: white;
   font-weight: bold;
-  font-size: 14px;
   border-radius: 50%; /* Makes it a circle */
   flex-shrink: 0; /* Prevents the circle from shrinking */
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+
+  html {
+    font-size: 8px;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .search-container {
+    height: 0mm;
+    visibility: hidden;
+  }
 }
