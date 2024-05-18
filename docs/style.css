@@ -84,6 +84,7 @@ body {
   border-top-right-radius: 3px;
   font-size: 24px;
   margin: 0;
+  margin-left: 5px;
   text-align: center;
 }
 
@@ -91,7 +92,8 @@ body {
   font-size: 14px;
   color: rgb(168, 165, 165);
   margin: 5px 0;
-  text-align: center;
+  margin-left: 5px;
+  text-align: left;
 }
 
 .card .details {
@@ -140,4 +142,38 @@ body {
 
 .hidden {
   display: none;
+}
+
+.action {
+  color: rgb(10, 103, 10);
+}
+
+.bonusaction {
+  color: rgb(223, 117, 11);
+}
+
+.reaction {
+  color: rgb(120, 31, 179);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-c {
+  font-family: "Roboto", sans-serif;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 50%; /* Makes it a circle */
+  flex-shrink: 0; /* Prevents the circle from shrinking */
 }

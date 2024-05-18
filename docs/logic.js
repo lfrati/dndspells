@@ -70,11 +70,63 @@ function restore() {
   }
 }
 
+function make_card(spell) {
+  return `
+    <div class="card-header">
+      <h1 id="spellname">${spell.name}</h1>
+      ${
+        spell.duration.includes("Concentration")
+          ? `<div class="card-c">C</div>`
+          : ``
+      }
+    </div>
+      <h2 id="spellschool">${spell.school}</h2>
+      <div class="details">
+        <div class="detail">
+          <strong>CASTING TIME</strong>
+          <span>${spell.casting_time}</span>
+        </div>
+        <div class="detail">
+          <strong>RANGE</strong>
+          <span>${spell.range}</span>
+        </div>
+        <div class="detail">
+          <strong>COMPONENTS</strong>
+          <span>${spell.components}</span>
+        </div>
+        <div class="detail">
+          <strong>DURATION</strong>
+          <span>${spell.duration}</span>
+        </div>
+      </div>
+      <div class="description">
+        ${
+          spell.materials
+            ? "<p><strong>Materials:</strong> " + spell.materials + "</p>"
+            : ""
+        }
+        <p>
+        ${spell.description}
+        </p>
+        ${
+          spell.upcast
+            ? "<p><strong>At Higher Levels:</strong> " + spell.upcast + "</p>"
+            : ""
+        }`;
+}
+
 function make_spell(spell) {
   const container = document.getElementById("cards-container");
 
   const card = document.createElement("div");
   card.className = "card";
+  if (spell.casting_time.includes("bonus action")) {
+    card.classList.add("bonusaction");
+  } else if (spell.casting_time.includes("reaction")) {
+    card.classList.add("reaction");
+  } else {
+    card.classList.add("action");
+  }
   card.onclick = function () {
     remove_card(this);
   };
@@ -83,20 +135,6 @@ function make_spell(spell) {
 
   container.appendChild(card);
 }
-
-// document
-//   .querySelector("#searchInput")
-//   .addEventListener("keydown", function (event) {
-//     if (event.key === "Escape" || event.key === "Esc") {
-//       this.blur();
-//     }
-//   });
-
-// document.querySelector("#searchInput").addEventListener("blur", function () {
-//   const suggestions = document.getElementById("suggestions");
-//   suggestions.innerHTML = ""; // Clear previous suggestions
-//   this.value = "";
-// });
 
 document.addEventListener("click", function (event) {
   const suggestions = document.getElementById("suggestions");
@@ -141,42 +179,5 @@ document.querySelector("#searchInput").addEventListener("input", function () {
     });
   }
 });
-
-function make_card(spell) {
-  return `<h1 id="spellname">${spell.name}</h1>
-      <h2 id="spellschool">${spell.school}</h2>
-      <div class="details">
-        <div class="detail">
-          <strong>CASTING TIME</strong>
-          <span>${spell.casting_time}</span>
-        </div>
-        <div class="detail">
-          <strong>RANGE</strong>
-          <span>${spell.range}</span>
-        </div>
-        <div class="detail">
-          <strong>COMPONENTS</strong>
-          <span>${spell.components}</span>
-        </div>
-        <div class="detail">
-          <strong>DURATION</strong>
-          <span>${spell.duration}</span>
-        </div>
-      </div>
-      <div class="description">
-        ${
-          spell.materials
-            ? "<p><strong>Materials:</strong> " + spell.materials + "</p>"
-            : ""
-        }
-        <p>
-        ${spell.description}
-        </p>
-        ${
-          spell.upcast
-            ? "<p><strong>At Higher Levels:</strong> " + spell.upcast + "</p>"
-            : ""
-        }`;
-}
 
 restore();

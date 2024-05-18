@@ -13,7 +13,9 @@
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search for spell..." />
       <button onclick="serialize()">Save</button>
-      <button onclick="remove_all()">Clear</button>
+      <button onclick="if(confirm('Are you sure?')){remove_all()}">
+        Clear
+      </button>
       <ul class="hidden" id="suggestions" style="list-style: none"></ul>
     </div>
 
