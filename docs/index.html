@@ -12,11 +12,9 @@
   <body>
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search for spell..." />
-      <button onclick="if(confirm('Are you sure?')){remove_all()}">
-        Clear
-      </button>
-      <p>Right-click card to remove it.</p>
-      <ul class="hidden" id="suggestions" style="list-style: none"></ul>
+      <button disabled id="undo-button" onclick="undo()">Undo</button>
+      <button onclick="remove_all(true)">Clear</button>
+      <ul id="suggestions" style="list-style: none"></ul>
     </div>
 
     <div id="cards-container"></div>

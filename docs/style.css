@@ -29,17 +29,26 @@ body {
   top: 100%; /* Position below the input field */
   left: 0; /* Align to the left of the input field */
   z-index: 100; /* Ensures the list is on top of other content */
-  width: 20rem; /* Match the width of the container */
+  width: 20rem;
   background-color: white;
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
-
+/* 
+I'm setting suggestions' borders to be only top bottom 
+because the left/right is provided by li's.
+I'm setting the top/bottom to be half of left/right so that 
+2 consecutive elements form the desired thickness
+*/
 #suggestions li {
-  border: 1px solid orange;
+  border-style: solid;
+  border-color: grey;
+  border-width: 0.5px 1px;
   padding: 10px;
   background: white;
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
 }
 
@@ -158,14 +167,6 @@ body {
   transform: scale(1.05);
 }
 
-.card.removing {
-  opacity: 0;
-}
-
-.hidden {
-  display: none;
-}
-
 .action {
   color: rgb(10, 103, 10);
 }
@@ -250,4 +251,12 @@ button:hover {
   box-shadow: rgba(27, 31, 35, 0.1) 0px 1px 0px 0px,
     rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
   transition-duration: 0.1s;
+}
+
+button:disabled {
+  /* cursor: not-allowed; */
+  color: #aaa;
+  background-color: #e0e0e0;
+  border-color: #d0d0d0;
+  box-shadow: none;
 }
