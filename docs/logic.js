@@ -8,12 +8,9 @@ function get_spell_names() {
 }
 
 function get_card_names() {
-  let state = [];
-  for (let node of document.querySelectorAll(
-    "#cards-container .card #spellname"
-  )) {
-    state.push(node.innerHTML);
-  }
+  let state = Array.from(
+    document.querySelectorAll("#cards-container .card")
+  ).map((card) => card.dataset.title);
   return state;
 }
 
@@ -40,8 +37,7 @@ function remove_card(name, undoable) {
   const cards = document.querySelectorAll(".card");
 
   cards.forEach((card) => {
-    const h1 = card.querySelector("h1#spellname");
-    if (h1.textContent === name) {
+    if (card.dataset.title === name) {
       card.remove();
     }
   });
@@ -82,6 +78,7 @@ function add_card(name, undoable) {
 
   const card = document.createElement("div");
   card.className = "card";
+  card.dataset.title = name;
   if (spell.casting_time.includes("bonus action")) {
     card.classList.add("bonusaction");
   } else if (spell.casting_time.includes("reaction")) {
@@ -217,7 +214,6 @@ function clear_suggestions() {
   const searchInput = document.getElementById("searchInput");
   suggestions.innerHTML = ""; // Clear suggestions if clicked outside
   searchInput.value = ""; // also clear input field
-  suggestions.classList.add("hidden");
 }
 
 document.querySelector("#searchInput").addEventListener("input", function () {
