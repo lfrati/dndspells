@@ -1,8 +1,4 @@
 const STORAGE_NAME = "qb41tc90zEkiDiOh6UcjD0ChhuSmRyfh";
-const spells_list = {};
-for (let spell of spells) {
-  spells_list[spell.name] = spell;
-}
 
 function get_cards() {
   let state = [];
@@ -18,6 +14,7 @@ function remove_card(card) {
   card.classList.add("removing");
   setTimeout(() => {
     card.remove();
+    serialize();
   }, 300);
 }
 
@@ -60,7 +57,7 @@ function restore() {
   // Deserialize the string back to an object
   if (serializedState) {
     const state = JSON.parse(serializedState);
-    let spells = state.map((name) => spells_list[name]);
+    let spells = state.map((name) => all_spells[name]);
     spells = spells.sort(compare);
     console.log(spells);
     console.log("Data retrieved:", state);
@@ -105,9 +102,7 @@ function make_card(spell) {
             ? "<p><strong>Materials:</strong> " + spell.materials + "</p>"
             : ""
         }
-        <p>
         ${spell.description}
-        </p>
         ${
           spell.upcast
             ? "<p><strong>At Higher Levels:</strong> " + spell.upcast + "</p>"
@@ -127,7 +122,8 @@ function make_spell(spell) {
   } else {
     card.classList.add("action");
   }
-  card.onclick = function () {
+  card.oncontextmenu = function (event) {
+    event.preventDefault();
     remove_card(this);
   };
 
@@ -161,15 +157,17 @@ document.querySelector("#searchInput").addEventListener("input", function () {
 
   if (input.length > 0) {
     suggestions.classList.remove("hidden");
-    const filteredKeys = Object.keys(spells_list).filter(
+    const filteredKeys = Object.keys(all_spells).filter(
       (key) =>
         key.toLowerCase().includes(input.toLowerCase()) && !cards.includes(key)
     );
 
     filteredKeys.forEach((key) => {
       const li = document.createElement("li");
-      let spell = spells_list[key];
-      li.textContent = `${key}`;
+      let spell = all_spells[key];
+      li.innerHTML = `<strong>${key}</strong>&nbsp&nbsp&nbsp${number_to_level(
+        spell.level
+      )}`;
       li.onclick = function () {
         make_spell(spell);
         clear_suggestions();
@@ -179,5 +177,20 @@ document.querySelector("#searchInput").addEventListener("input", function () {
     });
   }
 });
+
+function number_to_level(num) {
+  switch (num) {
+    case 0:
+      return "Cantrip";
+    case 1:
+      return "1st level";
+    case 2:
+      return "2nd level";
+    case 3:
+      return "3rd level";
+    default:
+      return String(num) + "th level";
+  }
+}
 
 restore();

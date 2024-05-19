@@ -12,16 +12,16 @@
   <body>
     <div class="search-container">
       <input type="text" id="searchInput" placeholder="Search for spell..." />
-      <button onclick="serialize()">Save</button>
       <button onclick="if(confirm('Are you sure?')){remove_all()}">
         Clear
       </button>
+      <p>Right-click card to remove it.</p>
       <ul class="hidden" id="suggestions" style="list-style: none"></ul>
     </div>
 
     <div id="cards-container"></div>
 
-    <script type="text/javascript" src="full_spells.js"></script>
+    <script type="text/javascript" src="spells.js"></script>
     <script type="text/javascript" src="logic.js"></script>
   </body>
 </html>
