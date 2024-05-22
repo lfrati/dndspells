@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="search-container">
+    <header class="search-container">
       <input type="text" id="searchInput" placeholder="Search for spell..." />
       <button disabled id="undo-button" onclick="undo()">Undo</button>
       <button onclick="remove_all(true)">Clear</button>
@@ -23,7 +23,7 @@
       />
       <label for="load-spells" class="button">Load</label>
       <ul id="suggestions" style="list-style: none"></ul>
-    </div>
+    </header>
 
     <div id="cards-container"></div>
 

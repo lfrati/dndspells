@@ -1,5 +1,43 @@
 html {
   font-size: 12px;
+  background-color: #fff;
+  background-image: radial-gradient(#999 5%, transparent 0);
+  background-size: 35px 35px;
+  /* background-image: linear-gradient(
+      90deg,
+      transparent 79px,
+      #abced4 79px,
+      #abced4 81px,
+      transparent 81px
+    ),
+    linear-gradient(#eee 0.1em, transparent 0.1em);
+  background-size: 100% 1.2em; */
+}
+
+/* from https://github.com/jonathonf/solbera-dnd-fonts/tree/master */
+@font-face {
+  font-family: "MrEaves";
+  src: url("fonts/Mr\ Eaves\ Small\ Caps.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Nodesto";
+  src: url("fonts/NodestoCapsCondensed-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bookinsanity";
+  src: url("fonts/Bookinsanity.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bookinsanity";
+  src: url("fonts/Bookinsanity\ Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
 }
 
 body {
@@ -9,7 +47,14 @@ body {
 .search-container {
   position: relative;
   display: flex;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: rgba(165, 180, 205, 0.594);
   width: 100%;
+}
+
+#searchInput {
+  margin-left: 1rem;
 }
 
 .search-container p {
@@ -84,7 +129,14 @@ I'm setting the top/bottom to be half of left/right so that
   padding: 1rem;
 }
 
+#spellname {
+  font-family: "MrEaves";
+  /* font-family: "Nodesto"; */
+  /* font-family: "Bookinsanity"; */
+}
+
 .card {
+  font-family: "Bookinsanity";
   background-color: white;
   width: 30rem;
   padding: 1rem;
@@ -182,6 +234,7 @@ I'm setting the top/bottom to be half of left/right so that
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 3rem;
 }
 
 .card-c {
@@ -230,15 +283,15 @@ label {
   display: inline-block;
   outline: 0;
   cursor: pointer;
-  padding: 5px 16px;
-  font-size: 14px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 20px;
   vertical-align: middle;
   margin-left: 1rem;
   border: 1px solid;
   border-radius: 6px;
-  color: #0366d6;
+  color: black;
   background-color: #fafbfc;
   border-color: #1b1f2326;
   box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px,
