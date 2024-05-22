@@ -257,4 +257,52 @@ function number_to_level(num) {
   }
 }
 
+document.getElementById("save-button").addEventListener("click", function () {
+  const data = get_card_names();
+  const encoded = encodeURIComponent(JSON.stringify(data));
+  const dataStr = `data:text/json;charset=utf-8,${encoded}`;
+  const downloadAnchorNode = document.createElement("a");
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", "cards.json");
+  document.body.appendChild(downloadAnchorNode); // Required for Firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+});
+
+document
+  .getElementById("load-spells")
+  .addEventListener("change", function (event) {
+    const file = event.target.files[0];
+
+    if (!file || file.type !== "application/json") {
+      console.error("Please select a valid JSON file.");
+      event.target.value = ""; // Reset the file input value
+      return;
+    }
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      let jsonContent;
+      const content = e.target.result;
+      try {
+        jsonContent = Array.from(JSON.parse(content));
+      } catch (err) {
+        console.error("Error parsing JSON:", err);
+        return;
+      }
+
+      remove_all();
+      jsonContent.forEach((name) => {
+        if (all_spells[name]) {
+          console.log("Adding", name);
+          add_card(name, false);
+        }
+      });
+      sort_cards();
+    };
+    reader.readAsText(file);
+    // Reset the file input value so that the change event can be triggered again
+    event.target.value = "";
+  });
+
 restore();

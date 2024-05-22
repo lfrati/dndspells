@@ -4,7 +4,6 @@ html {
 
 body {
   display: block;
-  margin: 1rem;
 }
 
 .search-container {
@@ -224,7 +223,10 @@ I'm setting the top/bottom to be half of left/right so that
   }
 }
 
-button {
+button,
+label {
+  font-family: "Arial";
+  font-size: 1rem;
   display: inline-block;
   outline: 0;
   cursor: pointer;
@@ -244,7 +246,8 @@ button {
   transition: 0.2s cubic-bezier(0.3, 0, 0.5, 1);
   transition-property: color, background-color, border-color;
 }
-button:hover {
+button:hover,
+label:hover {
   color: #ffffff;
   background-color: #0366d6;
   border-color: #1b1f2326;
@@ -252,7 +255,6 @@ button:hover {
     rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
   transition-duration: 0.1s;
 }
-
 button:disabled {
   /* cursor: not-allowed; */
   color: #aaa;
