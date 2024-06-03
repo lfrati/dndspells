@@ -1,4 +1,5 @@
 html {
+  overscroll-behavior: none; /* Prevents the bounce effect */
   font-size: 12px;
   background-color: #fff;
   background-image: radial-gradient(#999 5%, transparent 0);
@@ -12,6 +13,11 @@ html {
     ),
     linear-gradient(#eee 0.1em, transparent 0.1em);
   background-size: 100% 1.2em; */
+}
+
+body {
+  overscroll-behavior: none; /* Prevents the bounce effect */
+  display: block;
 }
 
 /* from https://github.com/jonathonf/solbera-dnd-fonts/tree/master */
@@ -40,12 +46,11 @@ html {
   font-style: normal;
 }
 
-body {
-  display: block;
-}
-
 .search-container {
-  position: relative;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 1rem;
+  z-index: 10;
   display: flex;
   padding-top: 1rem;
   padding-bottom: 1rem;
