@@ -127,6 +127,7 @@ I'm setting the top/bottom to be half of left/right so that
   flex-wrap: wrap;
   justify-content: left;
   padding: 1rem;
+  align-items: flex-start; /* Ensure flex items start at the top */
 }
 
 #spellname {
@@ -151,6 +152,7 @@ I'm setting the top/bottom to be half of left/right so that
   /*transition: transform 0.2s, opacity 0.2s;*/
   transition: opacity 0.3s ease;
   break-inside: avoid;
+  align-self: flex-start; /* Prevent stretching */
 }
 
 .card h1 {
