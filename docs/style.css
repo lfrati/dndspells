@@ -47,9 +47,7 @@ body {
 }
 
 .search-container {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  top: 1rem;
+  position: relative;
   z-index: 10;
   display: flex;
   padding-top: 1rem;
